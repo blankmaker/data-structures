@@ -29,12 +29,18 @@ treeMethods.contains = function(target){
 
   var treeLoop = function(tree) {
     // if tree value is equal to target, return true
-    debugger;
     if (tree.value === target) {
       return true;
     } else if (tree.children !== undefined) {
       for (var i = 0; i < tree.children.length; i++) {
-        return treeLoop(tree.children[i]);
+        var branch = treeLoop(tree.children[i]);
+        if (branch) {
+          return true;
+        } else if (tree.children[i+1] !== undefined) {
+          return treeLoop(tree.children[i+1]);
+        } else {
+          return false;
+        }
       }
     } else {
       return false;
