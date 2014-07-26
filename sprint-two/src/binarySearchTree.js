@@ -40,12 +40,34 @@ binTreeMethods.insert = function(value) {
 
 // create contains
 binTreeMethods.contains = function(target) {
-
+// start at top of tree and check if value = target
+  if (this.value === target) {
+    return true;
+  } else if (target > this.value) {
+      if (this.right !== null) {
+        return this.right.contains(target);
+      }
+  } else  {
+    if (this.left !== null) {
+      return this.left.contains(target);
+    }
+  }
+  return false;
 };
 
 // create depthFirstLog
 binTreeMethods.depthFirstLog = function(callback) {
+// return callback(this.value)
+// also call on this.left and this.right (if they exist)
+  this.value = callback.call(null, this.value);
 
+  if (this.left !== null) {
+    this.left.depthFirstLog(callback);
+  }
+
+  if (this.right !== null) {
+    this.right.depthFirstLog(callback);
+  }
 };
 
 
