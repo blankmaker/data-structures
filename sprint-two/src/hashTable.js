@@ -9,9 +9,8 @@ HashTable.prototype.insert = function(k, v){ // 'cat', 'meow'
   if (this._storage.get(i) === undefined) {
     this._storage.set(i, []);
   }
-  var newObj = {};
-  newObj[k] = v;
-  this._storage.get(i).push(newObj);
+
+  this._storage.get(i).push([k,v]);
 
 };
 
@@ -23,8 +22,8 @@ HashTable.prototype.retrieve = function(k){
   }
   var bucket = this._storage.get(i);
   for (var j = 0; j < bucket.length; j++) {
-     if (bucket[j][k] !== undefined) {
-      return bucket[j][k];
+     if (bucket[j][0] === k) {
+      return bucket[j][1];
     }
   }
   return null;
@@ -42,7 +41,7 @@ HashTable.prototype.remove = function(k){
   }
   var bucket = this._storage.get(i);
   for (var j = 0; j < bucket.length; j++) {
-     if(bucket[j][k] !== undefined) {
+     if(bucket[j][0] === k) {
       bucket.splice(j,1);
     }
   }
