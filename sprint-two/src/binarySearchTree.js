@@ -59,7 +59,7 @@ binTreeMethods.contains = function(target) {
 binTreeMethods.depthFirstLog = function(callback) {
 // return callback(this.value)
 // also call on this.left and this.right (if they exist)
-  this.value = callback.call(null, this.value);
+  callback(this.value);
 
   if (this.left !== null) {
     this.left.depthFirstLog(callback);

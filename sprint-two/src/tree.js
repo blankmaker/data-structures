@@ -36,6 +36,7 @@ treeMethods.contains = function(target){
         var branch = treeLoop(tree.children[i]);
         if (branch) {
           return true;
+          // fix this to remove the extra return falses
         } else if (tree.children[i+1] !== undefined) {
           return treeLoop(tree.children[i+1]);
         } else {
@@ -51,6 +52,16 @@ treeMethods.contains = function(target){
   // else if there are no children return false
 };
 
+treeMethods.traverse = function(callback) {
+
+  callback(this.value);
+  if (this.children !== undefined) {
+    for (var i = 0; i < this.children.length; i++) {
+      this.children[i].traverse(callback);
+    }
+  }
+
+};
 
 /*
  * Complexity: What is the time complexity of the above functions?
