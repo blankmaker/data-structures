@@ -3,21 +3,7 @@ var HashTable = function(){
   this._storage = makeLimitedArray(this._limit);
 };
 
-<<<<<<< HEAD
-HashTable.prototype.insert = function(key, value){
-  var hash = getIndexBelowMaxForKey(key, this._limit);
-};
 
-HashTable.prototype.retrieve = function(key){
-  var hash = getIndexBelowMaxForKey(key, this._limit);
-
-};
-
-HashTable.prototype.remove = function(key){
-
-};
-
-=======
 HashTable.prototype.insert = function(k, v){ // 'cat', 'meow'
   var i = getIndexBelowMaxForKey(k, this._limit); // i = hashed key ('cat', 8)
   // if the index 'i' is undefined, create a new array at i
@@ -61,7 +47,7 @@ HashTable.prototype.remove = function(k){
     }
   }
   return null;
->>>>>>> pair
+
 
 
 };
