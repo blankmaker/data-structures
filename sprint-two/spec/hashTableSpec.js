@@ -33,6 +33,7 @@ describe('hashTable', function() {
     var v1 = "val1";
     var v2 = "val2";
     var oldHashFunction = window.getIndexBelowMaxForKey;
+    console.log(oldHashFunction);
     window.getIndexBelowMaxForKey = function() { return 0; };
     hashTable.insert(v1, v1);
     hashTable.insert(v2, v2);
